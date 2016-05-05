@@ -1,3 +1,6 @@
+# pip install aliyun-python-sdk-emr-hack
+
+
 import json
 
 from os import getenv

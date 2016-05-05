@@ -8,7 +8,7 @@ except IOError:
 
 setup(
     name="aliyun-python-sdk-emr-hack",
-    version="0.1.0",
+    version="0.1.1",
     description="A pip package",
     license="MIT",
     author="Liwen",
