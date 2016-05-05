@@ -27,7 +27,30 @@ class CreateClusterRequest(RpcRequest):
 		return self.get_query_params().get('EcsOrder')
 
 	def set_EcsOrder(self,EcsOrder):
-		self.add_query_param('EcsOrder',EcsOrder)
+		"""
+		this.ecsOrders = ecsOrders;
+		for (int i = 0; i < ecsOrders.size(); i++) {
+			putQueryParameter("EcsOrder." + (i + 1) + ".Index" , ecsOrders.get(i).getIndex());
+			putQueryParameter("EcsOrder." + (i + 1) + ".NodeCount" , ecsOrders.get(i).getNodeCount());
+			putQueryParameter("EcsOrder." + (i + 1) + ".NodeType" , ecsOrders.get(i).getNodeType());
+			putQueryParameter("EcsOrder." + (i + 1) + ".InstanceType" , ecsOrders.get(i).getInstanceType());
+			putQueryParameter("EcsOrder." + (i + 1) + ".DiskType" , ecsOrders.get(i).getDiskType());
+			putQueryParameter("EcsOrder." + (i + 1) + ".DiskCapacity" , ecsOrders.get(i).getDiskCapacity());
+			putQueryParameter("EcsOrder." + (i + 1) + ".DiskCount" , ecsOrders.get(i).getDiskCount());
+		}
+		:param EcsOrder:
+		:return:
+		"""
+		# self.add_query_param('EcsOrder',EcsOrder)
+		for i in range(0, len(EcsOrder)):
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".Index", EcsOrder[i]['Index'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".NodeCount", EcsOrder[i]['NodeCount'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".NodeType", EcsOrder[i]['NodeType'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".InstanceType", EcsOrder[i]['InstanceType'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".DiskType", EcsOrder[i]['DiskType'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".DiskCapacity", EcsOrder[i]['DiskCapacity'])
+			self.add_query_param('EcsOrder.' + str(i + 1) + ".DiskCount", EcsOrder[i]['DiskCount'])
+
 
 	def get_BootstrapAction(self):
 		return self.get_query_params().get('BootstrapAction')
@@ -160,3 +183,10 @@ class CreateClusterRequest(RpcRequest):
 
 	def set_Configurations(self,Configurations):
 		self.add_query_param('Configurations',Configurations)
+
+
+	def get_RegionId(self):
+		return self.get_query_params().get('RegionId')
+
+	def set_RegionId(self, RegionId):
+		self.add_query_param('RegionId', RegionId)
