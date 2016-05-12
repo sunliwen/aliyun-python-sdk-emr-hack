@@ -4,6 +4,7 @@
 import json
 
 from os import getenv
+from pprint import pprint
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkemr.request.v20160408 import ListClustersRequest
 
@@ -21,7 +22,7 @@ req.set_accept_format("JSON")
 status, headers, body = client.get_response(req)
 if status == 200:
     regions = json.loads(body)
-    print(regions)
+    pprint(regions)
     cluster = regions['Clusters']['ClusterInfo'][0]
     print(cluster['Name'])
 else:
